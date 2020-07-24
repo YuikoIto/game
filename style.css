@@ -44,3 +44,19 @@ section h2 {
     content: '/';
     margin: 0 5px;
 }
+
+.attack {
+    margin: 50px auto 0;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff4444;
+    color: #ffffff;
+    border: 0;
+    outline: none;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

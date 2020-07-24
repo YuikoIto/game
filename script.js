@@ -8,11 +8,13 @@ const enemyData = {
     hp: 500
 }
 
+function insertText(id, text) {
+    document.getElementById(id).textContent = text;
+}
 
-document.getElementById("playerName").textContent = playerData["name"];
-document.getElementById("currentPlayerHp").textContent = playerData["hp"];
-document.getElementById("maxPlayerHp").textContent = playerData["hp"];
-
-document.getElementById("enemyName").textContent = enemyData["name"];
-document.getElementById("currentEnemyHp").textContent = playerData["hp"];
-document.getElementById("maxEnemyHp").textContent = playerData["hp"];
+insertText("playerName", playerData["name"]);
+insertText("currentPlayerHp", playerData["hp"]);
+insertText("maxPlayerHp", playerData["hp"]);
+insertText("enemyName", enemyData["name"]);
+insertText("currentEnemyHp", enemyData["hp"]);
+insertText("maxEnemyHp", enemyData["hp"]);
