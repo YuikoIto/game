@@ -15,7 +15,7 @@ main {
     background-color: #dddddd;
     border-radius: 5px;
     max-width: 1000px;
-    width: 100px;
+    width: 100%;
 }
 
 section {

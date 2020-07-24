@@ -5,5 +5,8 @@ const playerData = {
 
 const enemyData = {
     name: "敵",
-    hp: 100
+    hp: 500
 }
+
+document.getElementById("enemyName").textContent = enemyData["name"];
+document.getElementById("playerName").textContent = playerData["name"];
