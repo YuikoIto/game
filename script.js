@@ -1,4 +1,5 @@
 const damageRange = 0.2;
+let logIndex = 0;
 
 const playerData = {
     name: "プレイヤー",
@@ -51,6 +52,14 @@ function insertText(id, text) {
     document.getElementById(id).textContent = text;
 }
 
+function insertLog(texts) {
+    const logsElement = document.getElementById("log");
+    const createLog = document.createElement("li");
+    logIndex++;
+    createLog.innerHTML = logIndex+":"+texts;
+    logsElement.insertBefore(createLog, logsElement.firstChild)
+}
+
 insertText("playerName", playerData["name"]);
 insertText("currentPlayerHp", playerData["hp"]);
 insertText("maxPlayerHp", playerData["hp"]);
@@ -60,6 +69,9 @@ insertText("maxEnemyHp", enemyData["hp"]);
 
 document.getElementById("attack").addEventListener("click", function(){
     let endGame = false;
+
+    const playerName = '<span style = "color: blue;">' +playerData["name"] + "</span>";
+    const enemyName = '<span style = "color: red;">'+enemyData["name"] + "</span>";
 
     const playerDamage = damageCalculation(playerData["attack"], playerData["deffence"]);
     const enemyDamage = damageCalculation(enemyData["attack"], enemyData["deffence"]);
@@ -71,6 +83,9 @@ document.getElementById("attack").addEventListener("click", function(){
 
     document.getElementById("currentEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%";
     document.getElementById("currentPlayerHpGaugeValue").style.width = (playerData["hp"] / playerData["maxHp"]* 100) + "%";
+
+    insertLog(playerName+"の攻撃！" + enemyName + "に対して" + playerDamage + "のダメージ！")
+    insertLog(enemyName+"の攻撃！" + playerName+ "に対して" + enemyDamage + "のダメージ！")
 
     if (enemyData["hp"] <= 0){
         alert('勝利');
