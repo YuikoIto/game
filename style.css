@@ -33,3 +33,14 @@ section h2 {
 .enemy {
     margin-bottom: 20px;
 }
+
+.hp {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.hp > div:first-of-type::after{
+    content: '/';
+    margin: 0 5px;
+}
