@@ -60,3 +60,8 @@ section h2 {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.attack.deactive {
+    pointer-events: none;
+    opacity: .5;
+}
