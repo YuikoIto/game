@@ -68,39 +68,44 @@ insertText("currentEnemyHp", enemyData["hp"]);
 insertText("maxEnemyHp", enemyData["hp"]);
 
 document.getElementById("attack").addEventListener("click", function(){
-    let endGame = false;
+    let victory = false;
+    let lose = false;
 
     const playerName = '<span style = "color: blue;">' +playerData["name"] + "</span>";
     const enemyName = '<span style = "color: red;">'+enemyData["name"] + "</span>";
 
+    //味方の処理
     const playerDamage = damageCalculation(playerData["attack"], playerData["deffence"]);
+    if (!victory) {
+        playerData["hp"] -= playerDamage;
+        insertText("currentPlayerHp", playerData["hp"]);
+        document.getElementById("currentPlayerHpGaugeValue").style.width = (playerData["hp"] / playerData["maxHp"]* 100) + "%";
+        insertLog(playerName+"の攻撃！" + enemyName + "に対して" + playerDamage + "のダメージ！")
+        
+        if (enemyData["hp"] <= 0){
+            alert('勝利');
+            victory = true;
+            enemyData["hp"] = 0;
+            document.getElementById("currentEnemyHpGaugeValue").style.width = "0%";
+            insertText("currentEnemyHp", enemyData["hp"]);
+        } 
+    }
+    //敵の処理
     const enemyDamage = damageCalculation(enemyData["attack"], enemyData["deffence"]);
-
     enemyData["hp"] -= enemyDamage;
-    playerData["hp"] -= playerDamage;
     insertText("currentEnemyHp", enemyData["hp"]);
-    insertText("currentPlayerHp", playerData["hp"]);
-
-    document.getElementById("currentEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%";
-    document.getElementById("currentPlayerHpGaugeValue").style.width = (playerData["hp"] / playerData["maxHp"]* 100) + "%";
-
-    insertLog(playerName+"の攻撃！" + enemyName + "に対して" + playerDamage + "のダメージ！")
+    document.getElementById("currentEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%"; 
     insertLog(enemyName+"の攻撃！" + playerName+ "に対して" + enemyDamage + "のダメージ！")
 
-    if (enemyData["hp"] <= 0){
-        alert('勝利');
-        endGame = true;
-        enemyData["hp"] = 0;
-        document.getElementById("currentEnemyHpGaugeValue").style.width = "0%";
-        insertText("currentEnemyHp", enemyData["hp"]);
-    } else if (playerData["hp"] <= 0) {
+    if (playerData["hp"] <= 0) {
         alert('負け');
-        endGame = true;
+        lose = true;
         playerData["hp"] = 0;
         document.getElementById("currentPlayerHpGaugeValue").style.width = "0%";
         insertText("currentPlayerHp", playerData["hp"]);
     } 
-    if (endGame) {
+    
+    if (victory || lose) {
         this.classList.add("deactive");
     }
 });
