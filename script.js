@@ -7,12 +7,28 @@ const playerData = {
     deffence: 2
 }
 
-const enemyData = {
-    name: "敵",
+const enemiesData = [
+    {
+    name: "敵1",
     hp: 500,
-    attack: 4,
+    attack: 5,
     deffence: 1
-}
+    },
+    {
+    name: "敵2",
+    hp: 200,
+    attack: 4,
+    deffence: 2
+    },
+    {
+    name: "敵3",
+    hp: 400,
+    attack: 8,
+    deffence: 6
+    }
+];
+
+const enemyData = enemiesData[Math.floor(Math.random()*enemiesData.length)];
 
 playerData["maxHp"] = playerData["hp"];
 enemyData["maxHp"] = enemyData["hp"];
@@ -45,7 +61,7 @@ insertText("maxEnemyHp", enemyData["hp"]);
 document.getElementById("attack").addEventListener("click", function(){
     let endGame = false;
 
-    const playerDamage = damageCalculation(playerData["attack"], enemyData["deffence"]);
+    const playerDamage = damageCalculation(playerData["attack"], playerData["deffence"]);
     const enemyDamage = damageCalculation(enemyData["attack"], enemyData["deffence"]);
 
     enemyData["hp"] -= enemyDamage;
