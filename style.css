@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+
+main {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #dddddd;
+    border-radius: 5px;
+    max-width: 1000px;
+    width: 100px;
+}
+
+section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+section h2 {
+    font-weight: bold;
+    font-style: 20px;
+    text-align: center;
+}
+
+.enemy {
+    margin-bottom: 20px;
+}
