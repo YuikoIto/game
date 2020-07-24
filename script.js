@@ -14,6 +14,9 @@ const enemyData = {
     deffence: 1
 }
 
+playerData["maxHp"] = playerData["hp"];
+enemyData["maxHp"] = enemyData["hp"];
+
 function damageCalculation(attack, deffence) {
     const maxDamage = attack * (1+damageRange);
     const minDamage = attack * (1-damageRange);
@@ -50,15 +53,20 @@ document.getElementById("attack").addEventListener("click", function(){
     insertText("currentEnemyHp", enemyData["hp"]);
     insertText("currentPlayerHp", playerData["hp"]);
 
+    document.getElementById("currentEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%";
+    document.getElementById("currentPlayerHpGaugeValue").style.width = (playerData["hp"] / playerData["maxHp"]* 100) + "%";
+
     if (enemyData["hp"] <= 0){
         alert('勝利');
         endGame = true;
         enemyData["hp"] = 0;
+        document.getElementById("currentEnemyHpGaugeValue").style.width = "0%";
         insertText("currentEnemyHp", enemyData["hp"]);
     } else if (playerData["hp"] <= 0) {
         alert('負け');
         endGame = true;
         playerData["hp"] = 0;
+        document.getElementById("currentPlayerHpGaugeValue").style.width = "0%";
         insertText("currentPlayerHp", playerData["hp"]);
     } 
     if (endGame) {
