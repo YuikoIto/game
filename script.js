@@ -5,7 +5,7 @@ const playerData = {
     name: "プレイヤー",
     hp: 100,
     attack: 5,
-    deffence: 2
+    defence: 2
 }
 
 const enemiesData = [
@@ -13,19 +13,19 @@ const enemiesData = [
     name: "敵1",
     hp: 500,
     attack: 5,
-    deffence: 1
+    defence: 1
     },
     {
     name: "敵2",
     hp: 200,
     attack: 4,
-    deffence: 2
+    defence: 2
     },
     {
     name: "敵3",
     hp: 400,
     attack: 8,
-    deffence: 6
+    defence: 6
     }
 ];
 
@@ -34,12 +34,12 @@ const enemyData = enemiesData[Math.floor(Math.random()*enemiesData.length)];
 playerData["maxHp"] = playerData["hp"];
 enemyData["maxHp"] = enemyData["hp"];
 
-function damageCalculation(attack, deffence) {
+function damageCalculation(attack, defence) {
     const maxDamage = attack * (1+damageRange);
     const minDamage = attack * (1-damageRange);
     const attackDamage = Math.floor(Math.random() * (maxDamage - minDamage) + minDamage);
     
-    const damage = attackDamage - deffence;
+    const damage = attackDamage - defence;
 
     if (damage < 1) {
         return 0;
@@ -75,7 +75,7 @@ document.getElementById("attack").addEventListener("click", function(){
     const enemyName = '<span style = "color: red;">'+enemyData["name"] + "</span>";
 
     //味方の処理
-    const playerDamage = damageCalculation(playerData["attack"], playerData["deffence"]);
+    const playerDamage = damageCalculation(playerData["attack"], playerData["defence"]);
     if (!victory) {
         playerData["hp"] -= playerDamage;
         insertText("currentPlayerHp", playerData["hp"]);
@@ -91,7 +91,7 @@ document.getElementById("attack").addEventListener("click", function(){
         } 
     }
     //敵の処理
-    const enemyDamage = damageCalculation(enemyData["attack"], enemyData["deffence"]);
+    const enemyDamage = damageCalculation(enemyData["attack"], enemyData["defence"]);
     enemyData["hp"] -= enemyDamage;
     insertText("currentEnemyHp", enemyData["hp"]);
     document.getElementById("currentEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%"; 
