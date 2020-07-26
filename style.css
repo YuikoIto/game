@@ -9,15 +9,35 @@ a {
     text-decoration: none;
 }
 
-main {
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #dddddd;
-    border-radius: 5px;
-    max-width: 1000px;
-    width: 100%;
-}
-
+.game {
+    position: relative;
+	width: 242px;
+	height: 402px;
+	margin: 0 auto;
+	background-color: #D4D4D4;
+	border-radius: 12px 12px 55px 12px;
+    box-shadow: 0 0 3px 2px rgba(0,0,0,.1) inset;
+    background-image:
+		url(../images/gameboy/text3.svg),
+		/*窪み上部*/
+		linear-gradient(to right, #C8C7C5, #C8C7C5),
+		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
+		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
+		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
+		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
+		radial-gradient(circle 4px, #C8C7C5 0%, #C8C7C5 99%, transparent),
+		linear-gradient(to right, #C8C7C5, #C8C7C5),
+		radial-gradient(circle 4px, #C8C7C5 0%, #C8C7C5 99%, transparent),
+		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
+		/*窪み下部*/
+		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
+		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
+		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
+		radial-gradient(circle 4px, #C8C7C5 0%, #C8C7C5 99%, transparent),
+		radial-gradient(circle 4px, #C8C7C5 0%, #C8C7C5 99%, transparent),
+		linear-gradient(to right, #C8C7C5, #C8C7C5),
+    
+/*
 section {
     background-color: #ffffff;
     padding: 20px;
@@ -89,3 +109,4 @@ section h2 {
     pointer-events: none;
     opacity: .5;
 }
+*/
