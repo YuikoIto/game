@@ -12,7 +12,8 @@ a {
 .game {
     position: relative;
 	width: 242px;
-	height: 402px;
+    height: 402px;
+    padding: 20px;
 	margin: 0 auto;
 	background-color: #D4D4D4;
 	border-radius: 12px 12px 55px 12px;
@@ -35,7 +36,12 @@ a {
 		linear-gradient(to bottom, #C8C7C5, #C8C7C5),
 		radial-gradient(circle 4px, #C8C7C5 0%, #C8C7C5 99%, transparent),
 		radial-gradient(circle 4px, #C8C7C5 0%, #C8C7C5 99%, transparent),
-		linear-gradient(to right, #C8C7C5, #C8C7C5),
+        linear-gradient(to right, #C8C7C5, #C8C7C5),
+}
+
+.screen {
+    background-color: #ffffff;
+}
     
 /*
 section {
