@@ -76,12 +76,25 @@ document.getElementById("attack").addEventListener("click", function(){
     const enemyName = '<span style = "color: red;">'+enemyData["name"] + "</span>";
 
     //味方の処理
-    const playerDamage = damageCalculation(playerData["attack"], enemyData["defence"]);
+    let playerDamage = damageCalculation(playerData["attack"], enemyData["defence"]);
+    if (Math.random() < criticalHit) {
+        playerDamage *= 2;
+        insertLog(playerName+"の攻撃！クリティカルヒット！" + enemyName+ "に対して" + playerDamage + "のダメージ！");
+    } else {
+        insertLog(playerName+"の攻撃！" + enemyName + "に対して" + playerDamage + "のダメージ！");
+    }
     if (!victory) {
         enemyData["hp"] -= playerDamage;
+        if (Math.random() < criticalHit) {
+            enemyDamage *= 2;
+            insertLog(enemyName+"の攻撃！クリティカルヒット！" + playerName+ "に対して" + enemyDamage + "のダメージ！");
+        } else {
+            insertLog(enemyName+"の攻撃！" + playerName+ "に対して" + enemyDamage + "のダメージ！");
+        }
+        
         insertText("currentPlayerHp", playerData["hp"]);
         document.getElementById("currentPlayerHpGaugeValue").style.width = (playerData["hp"] / playerData["maxHp"]* 100) + "%";
-        insertLog(playerName+"の攻撃！" + enemyName + "に対して" + playerDamage + "のダメージ！")
+        
         
         if (enemyData["hp"] <= 0){
             alert('勝利');
@@ -92,11 +105,11 @@ document.getElementById("attack").addEventListener("click", function(){
         } 
     }
     //敵の処理
-    const enemyDamage = damageCalculation(enemyData["attack"], playerData["defence"]);
+    let enemyDamage = damageCalculation(enemyData["attack"], playerData["defence"]);
     playerData["hp"] -= enemyDamage;
     insertText("currentEnemyHp", enemyData["hp"]);
     document.getElementById("currentEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%"; 
-    insertLog(enemyName+"の攻撃！" + playerName+ "に対して" + enemyDamage + "のダメージ！")
+    
 
     if (playerData["hp"] <= 0) {
         alert('負け');
