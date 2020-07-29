@@ -1,5 +1,5 @@
 const damageRange = 0.2;
-const criticalHit = 1;
+const criticalHit = 0.1;
 let logIndex = 0;
 
 const playerData = {
@@ -83,6 +83,14 @@ document.getElementById("attack").addEventListener("click", function(){
     } else {
         insertLog(playerName+"の攻撃！" + enemyName + "に対して" + playerDamage + "のダメージ！");
     }
+
+    //敵の処理
+    const enemyDamage = damageCalculation(enemyData["attack"], playerData["defence"]);
+    playerData["hp"] -= enemyDamage;
+    insertText("currentEnemyHp", enemyData["hp"]);
+    document.getElementById("currentEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%"; 
+    
+
     if (!victory) {
         let enemyDamage = damageCalculation(enemyData["attack"], playerData["defence"]);
         if (Math.random() < criticalHit) {
@@ -104,12 +112,7 @@ document.getElementById("attack").addEventListener("click", function(){
             insertText("currentEnemyHp", enemyData["hp"]);
         } 
     }
-    //敵の処理
-    const enemyDamage = damageCalculation(enemyData["attack"], playerData["defence"]);
-    playerData["hp"] -= enemyDamage;
-    insertText("currentEnemyHp", enemyData["hp"]);
-    document.getElementById("currentEnemyHpGaugeValue").style.width = (enemyData["hp"] / enemyData["maxHp"] * 100) + "%"; 
-    
+
 
     if (playerData["hp"] <= 0) {
         alert('負け');
