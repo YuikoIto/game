@@ -13,8 +13,8 @@ const enemiesData = [
     {
     name: "敵1",
     hp: 500,
-    attack: 5,
-    defence: 1
+    attack: 3,
+    defence: 3
     },
     {
     name: "敵2",
@@ -25,8 +25,8 @@ const enemiesData = [
     {
     name: "敵3",
     hp: 400,
-    attack: 8,
-    defence: 6
+    attack: 5,
+    defence: 3
     }
 ];
 
